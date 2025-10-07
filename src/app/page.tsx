@@ -1,103 +1,199 @@
-import Image from "next/image";
-
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "LogikLabs",
+    "url": "https://logiklabs.io",
+    "logo": "https://logiklabs.io/logo.png",
+    "description": "Rapid MVP and POC development for startups and founders. Ship working products in 2-4 weeks with AI-accelerated development.",
+    "email": "contact@logiklabs.io",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Banja Luka",
+      "addressCountry": "BIH"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/logik-labs/"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@logiklabs.io",
+      "contactType": "Customer Service"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "offerCount": "4",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "MVP Development",
+          "description": "Launch your product in 2-4 weeks with working MVP development"
+        },
+        {
+          "@type": "Offer",
+          "name": "Proof of Concept",
+          "description": "Test technical feasibility fast with working POC in days"
+        },
+        {
+          "@type": "Offer",
+          "name": "AI-Powered Features",
+          "description": "Add intelligent capabilities to your product with custom AI integration"
+        },
+        {
+          "@type": "Offer",
+          "name": "Rapid Prototyping",
+          "description": "Turn sketches into clickable prototypes in days"
+        }
+      ]
+    }
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+  const services = [
+    {
+      title: 'MVP Development',
+      description: 'Launch your product in 2-4 weeks. We build focused, working MVPs that let you validate your idea with real users and secure your next round of funding.',
+      icon: '🚀'
+    },
+    {
+      title: 'Proof of Concept',
+      description: 'Test technical feasibility fast. Get a working POC in days to validate core features, de-risk development, and make confident decisions about your product.',
+      icon: '⚡'
+    },
+    {
+      title: 'AI-Powered Features',
+      description: 'Add intelligent capabilities to your product. From AI chat and automation to custom ML features—we integrate cutting-edge AI that users actually want.',
+      icon: '🤖'
+    },
+    {
+      title: 'Rapid Prototyping',
+      description: 'Turn sketches into clickable prototypes in days. Perfect for investor demos, user testing, or validating design decisions before writing production code.',
+      icon: '✨'
+    }
+  ];
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="min-h-screen">
+        {/* Navigation */}
+        <nav className="fixed top-0 w-full bg-primary/95 backdrop-blur-sm z-50 border-b border-white/10">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-center items-center">
+          <div className="text-2xl md:text-3xl font-bold text-white">LOGIK LABS</div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            Validate Your Idea<br />in Weeks, Not Months
+          </h1>
+          <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto">
+            We help startups and founders ship working MVPs fast—so you can test with real users and iterate with confidence
+          </p>
+          <div className="mt-10">
+            <a
+              href="#contact"
+              className="inline-block bg-accent text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-opacity"
+            >
+              Ship Your MVP
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 px-6 bg-foreground/5">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2 text-accent">2-4 weeks</div>
+              <p className="text-foreground/70">From kickoff to working MVP</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2 text-accent">Real validation</div>
+              <p className="text-foreground/70">Ship to users, gather feedback, iterate</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2 text-accent">AI-accelerated</div>
+              <p className="text-foreground/70">Build faster without sacrificing quality</p>
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Built for Founders Who Need to Move Fast</h2>
+            <p className="text-lg text-foreground/70 mb-4">
+              You don't have months to spend on development. You need to validate your idea, get in front of users, and prove
+              your concept works—before your runway runs out.
+            </p>
+            <p className="text-lg text-foreground/70">
+              We specialize in rapid MVP and POC development for startups and solo founders. Using modern tools and AI-assisted
+              workflows, we cut development time in half while building products that are production-ready from day one.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">How We Help You Ship Fast</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="p-8 border border-foreground/10 rounded-2xl hover:border-accent transition-colors"
+              >
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                <p className="text-foreground/70">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 bg-foreground/5">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+          <p className="text-foreground/70 mb-8">
+            Looking for help? Reach out and we will do our best to assist you
+          </p>
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:contact@logiklabs.io"
+            className="inline-flex items-center gap-3 text-2xl md:text-3xl font-semibold text-accent hover:opacity-70 transition-opacity"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            contact@logiklabs.io
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 border-t border-foreground/10">
+        <div className="max-w-6xl mx-auto text-center text-foreground/60">
+          <div className="mb-6">
+            <p className="text-sm font-medium mb-2">Office Locations</p>
+            <div className="flex justify-center gap-4 flex-wrap text-sm">
+              <span>Croatia</span>
+              <span>•</span>
+              <span>Bosnia</span>
+              <span>•</span>
+              <span>Austria</span>
+              <span>•</span>
+              <span>Slovenia</span>
+            </div>
+          </div>
+          <p className="mb-4">© {new Date().getFullYear()} LOGIK LABS. All rights reserved.</p>
+          <div className="flex justify-center gap-6">
+            <a href="https://www.linkedin.com/company/logik-labs/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">LinkedIn</a>
+          </div>
+        </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
